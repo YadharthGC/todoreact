@@ -12,14 +12,14 @@ function App() {
 
   let fetch = async () => {
     try {
-      let products = await axios.get("http://localhost:3000/todo");
+      let products = await axios.get("https://yadharthnode.herokuapp.com/todo");
       setlist([...products.data]);
     } catch (error) {}
   };
 
   let handlecreate = async (e) => {
     try {
-      let post = await axios.post("http://localhost:3000/create", {
+      let post = await axios.post("https://yadharthnode.herokuapp.com/create", {
         message: task,
       });
       fetch();
@@ -30,9 +30,12 @@ function App() {
 
   let handlechange = async (e, id) => {
     try {
-      let update = await axios.put(`http://localhost:3000/update/${id}`, {
-        status: e.target.checked,
-      });
+      let update = await axios.put(
+        `https://yadharthnode.herokuapp.com/update/${id}`,
+        {
+          status: e.target.checked,
+        }
+      );
       fetch();
     } catch (error) {
       alert("error");
@@ -41,7 +44,7 @@ function App() {
 
   let handledelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/delete/${id}`);
+      await axios.delete(`https://yadharthnode.herokuapp.com/delete/${id}`);
       fetch();
     } catch (error) {
       alert("error");
